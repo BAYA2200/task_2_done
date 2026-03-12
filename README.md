@@ -6,15 +6,18 @@
 В репозитории приведён только код шаблона компонента.
 
 Что сделал
+- создан пользовательский шаблон компонента формы
+- интегрировал верстку 
+- шаблон протестирован на локальном сайте
 
 создан пользовательский шаблон компонента form.result.new
 
 Структура
 Основные файлы шаблона:
 
-template.php — вывод формы
-style.css — стили шаблона
-.parameters.php — параметры шаблона
-lang/ — языковые файлы
-Расположение в проекте Bitrix
-Шаблон размещается в директории: /local/templates/.default/components/bitrix/form/form123/bitrix/form.result.new/.default
+- template.php — вывод формы
+- style.css — стили шаблона
+- .parameters.php — параметры шаблона
+- lang/ — языковые файлы
+- Расположение в проекте Bitrix
+- Шаблон размещается в директории: /local/templates/.default/components/bitrix/form/form123/bitrix/form.result.new/.default
