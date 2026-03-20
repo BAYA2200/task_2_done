@@ -48,6 +48,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
     form questions
      ***********************************************************************************/
     ?>
+
+    <tbody>
     <div class="contact-form">
         <div class="contact-form__head">
             <div class="contact-form__head-title">Связаться</div>
@@ -58,49 +60,74 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
         <form class="contact-form__form" action="/" method="POST">
             <div class="contact-form__form-inputs">
                 <div class="input contact-form__input"><label class="input__label" for="medicine_name">
-                        <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_450"]["CAPTION"]?></div>
-                        <input class="input__input" type="text" id="medicine_name" name="SIMPLE_QUESTION_450" value=""
-                               required="">
+                        <div class="input__label-text">        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_450"]["CAPTION"]?>
+                        </div>
+                        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_450"]["HTML_CODE"]?>
+
                         <div class="input__notification">Поле должно содержать не менее 3-х символов</div>
                     </label></div>
-                <div class="input contact-form__input"><label class="input__label" for="SIMPLE_QUESTION_240">
-                        <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_240"]["CAPTION"]?></div>
-                        <input class="input__input" type="text" id="SIMPLE_QUESTION_240" name="SIMPLE_QUESTION_240" value=""
-                               required="">
+                <div class="input contact-form__input"><label class="input__label" for="medicine_company">
+                        <div class="input__label-text">        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_602"]["CAPTION"]?>
+                        </div>
+                        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_602"]["HTML_CODE"]?>
+
                         <div class="input__notification">Поле должно содержать не менее 3-х символов</div>
                     </label></div>
-                <div class="input contact-form__input"><label class="input__label" for="SIMPLE_QUESTION_602">
-                        <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_602"]["CAPTION"]?></div>
-                        <input class="input__input" type="email" id="SIMPLE_QUESTION_602" name="SIMPLE_QUESTION_602" value=""
-                               required="">
-                        <div class="input__notification">Неверный формат почты</div>
-                    </label></div>
-                <div class="input contact-form__input"><label class="input__label" for="SIMPLE_QUESTION_857">
-                        <div class="input__label-text"> <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_857"]["CAPTION"]?></div>
-                        <input class="input__input" type="tel" id="SIMPLE_QUESTION_857"
-                               data-inputmask="'mask': '+79999999999', 'clearIncomplete': 'true'" maxlength="12"
-                               x-autocompletetype="phone-full" name="SIMPLE_QUESTION_857" value="" required=""></label></div>
-            </div>
+                <div class="input contact-form__input"><label class="input__label" for="medicine_email">
+                        <div class="input__label-text">        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_240"]["CAPTION"]?>
+                        </div>
+                        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_240"]["HTML_CODE"]?>
+                </div>
+                <div class="input__notification">Неверный формат почты</div>
+                </label></div>
+            <div class="input contact-form__input"><label class="input__label" for="medicine_phone">
+                    <div class="input__label-text">        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_857"]["CAPTION"]?>
+                    </div>
+                    <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_857"]["HTML_CODE"]?>
+                </label></div>
             <div class="contact-form__form-message">
-                <div class="input"><label class="input__label" for="SIMPLE_QUESTION_204">
-                        <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_204"]["CAPTION"]?></div>
-                        <textarea class="input__input" type="text" id="SIMPLE_QUESTION_204" name="SIMPLE_QUESTION_204"
-                                  value="SIMPLE_QUESTION_204"></textarea>
+                <div class="input"><label class="input__label" for="medicine_message">
+                        <div class="input__label-text">        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_204"]["CAPTION"]?>
+                        </div>
+                        <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_204"]["HTML_CODE"]?>
+
                         <div class="input__notification"></div>
                     </label></div>
             </div>
-            <div class="contact-form__bottom">
-                <div class="contact-form__bottom-policy">Нажимая &laquo;Отправить&raquo;, Вы&nbsp;подтверждаете, что
-                    ознакомлены, полностью согласны и&nbsp;принимаете условия &laquo;Согласия на&nbsp;обработку персональных
-                    данных&raquo;.
-                </div>
-                <button class="form-button contact-form__bottom-button" data-success="Отправлено"
-                        data-error="Ошибка отправки" name="web_form_submit" type="submit" class="form__bottom contact-form__bottom" value="<?=htmlspecialcharsbx(trim($arResult["arForm"]["BUTTON"]) == '' ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]);?>"">
-                    <div class="form-button__title" >Оставить заявку</div>
-                </button>
-            </div>
-        </form>
     </div>
+
+
+    <?
+    if($arResult["isUseCaptcha"] == "Y")
+    {
+        ?>
+        <tr>
+            <th colspan="2"><b><?=GetMessage("FORM_CAPTCHA_TABLE_TITLE")?></b></th>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+            <td><input type="hidden" name="captcha_sid" value="<?=htmlspecialcharsbx($arResult["CAPTCHACode"]);?>" /><img src="/bitrix/tools/captcha.php?captcha_sid=<?=htmlspecialcharsbx($arResult["CAPTCHACode"]);?>" width="180" height="40" /></td>
+        </tr>
+        <tr>
+            <td><?=GetMessage("FORM_CAPTCHA_FIELD_TITLE")?><?=$arResult["REQUIRED_SIGN"];?></td>
+            <td><input type="text" name="captcha_word" size="30" maxlength="50" value="" class="inputtext" /></td>
+        </tr>
+        <?
+    } // isUseCaptcha
+    ?>
+    </tbody>
+    <tfoot>
+    <tr>
+        <th colspan="2">
+            <input <?=(intval($arResult["F_RIGHT"]) < 10 ? "disabled=\"disabled\"" : "");?> type="submit" name="web_form_submit" value="<?=htmlspecialcharsbx(trim($arResult["arForm"]["BUTTON"]) == '' ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]);?>" />
+            <?if ($arResult["F_RIGHT"] >= 15):?>
+                &nbsp;<input type="hidden" name="web_form_apply" value="Y" /><input type="submit" name="web_form_apply" value="<?=GetMessage("FORM_APPLY")?>" />
+            <?endif;?>
+            &nbsp;<input type="reset" value="<?=GetMessage("FORM_RESET");?>" />
+        </th>
+    </tr>
+    </tfoot>
+    </table>
     <p>
         <?=$arResult["REQUIRED_SIGN"];?> - <?=GetMessage("FORM_REQUIRED_FIELDS")?>
     </p>
