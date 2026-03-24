@@ -59,19 +59,19 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
             <div class="contact-form__form-inputs">
                 <div class="input contact-form__input"><label class="input__label" for="medicine_name">
                         <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_450"]["CAPTION"]?></div>
-                        <input class="input__input" type="text" id="medicine_name" name="SIMPLE_QUESTION_450" value=""
-                               required="">
+                        <input class="input__input" type="text" id="medicine_name" name="form_text_3" value=""
+                               required="" >
                         <div class="input__notification">Поле должно содержать не менее 3-х символов</div>
                     </label></div>
                 <div class="input contact-form__input"><label class="input__label" for="SIMPLE_QUESTION_240">
                         <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_240"]["CAPTION"]?></div>
-                        <input class="input__input" type="text" id="SIMPLE_QUESTION_240" name="SIMPLE_QUESTION_240" value=""
+                        <input class="input__input" type="text" id="SIMPLE_QUESTION_240" name="form_text_4" value=""
                                required="">
                         <div class="input__notification">Поле должно содержать не менее 3-х символов</div>
                     </label></div>
                 <div class="input contact-form__input"><label class="input__label" for="SIMPLE_QUESTION_602">
                         <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_602"]["CAPTION"]?></div>
-                        <input class="input__input" type="email" id="SIMPLE_QUESTION_602" name="SIMPLE_QUESTION_602" value=""
+                        <input class="input__input" type="email" id="SIMPLE_QUESTION_602" name="form_text_5" value=""
                                required="">
                         <div class="input__notification">Неверный формат почты</div>
                     </label></div>
@@ -79,13 +79,13 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                         <div class="input__label-text"> <?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_857"]["CAPTION"]?></div>
                         <input class="input__input" type="tel" id="SIMPLE_QUESTION_857"
                                data-inputmask="'mask': '+79999999999', 'clearIncomplete': 'true'" maxlength="12"
-                               x-autocompletetype="phone-full" name="SIMPLE_QUESTION_857" value="" required=""></label></div>
+                               x-autocompletetype="phone-full" name="form_text_6" value="" required=""></label></div>
             </div>
             <div class="contact-form__form-message">
                 <div class="input"><label class="input__label" for="SIMPLE_QUESTION_204">
                         <div class="input__label-text"><?=$arResult["QUESTIONS"]["SIMPLE_QUESTION_204"]["CAPTION"]?></div>
-                        <textarea class="input__input" type="text" id="SIMPLE_QUESTION_204" name="SIMPLE_QUESTION_204"
-                                  value="SIMPLE_QUESTION_204"></textarea>
+                        <textarea class="input__input" type="text" id="SIMPLE_QUESTION_204" name="form_text_7"
+                                  value=""></textarea>
                         <div class="input__notification"></div>
                     </label></div>
             </div>
@@ -98,6 +98,8 @@ if(!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true)die();
                         data-error="Ошибка отправки" name="web_form_submit" type="submit" class="form__bottom contact-form__bottom" value="<?=htmlspecialcharsbx(trim($arResult["arForm"]["BUTTON"]) == '' ? GetMessage("FORM_ADD") : $arResult["arForm"]["BUTTON"]);?>"">
                     <div class="form-button__title" >Оставить заявку</div>
                 </button>
+<!--                <input --><?php //=(intval($arResult["F_RIGHT"]) < 10 ? "disabled=\"disabled\"" : "");?><!-- class="form-button contact-form__bottom-button form-button__title" data-success="Отправлено"-->
+<!--                                                                                                data-error="Ошибка отправки" name="web_form_submit" type="submit" class="form__bottom contact-form__bottom" value="Оставить заявку"/>-->
             </div>
         </form>
     </div>
